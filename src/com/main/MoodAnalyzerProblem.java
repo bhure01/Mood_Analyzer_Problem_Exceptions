@@ -7,9 +7,9 @@ public class MoodAnalyzerProblem {
 
     //Default Constructor
     public MoodAnalyzerProblem() {
-        message="";
-
+        message = "";
     }
+
     //Parameterized Constructor to pass message as parameter
     public MoodAnalyzerProblem(String message) {
         this.message = message;
@@ -17,17 +17,20 @@ public class MoodAnalyzerProblem {
 
     //Method to Analyze the mood
     public String analyzeMood() {
-        if(message.contains("Happy"))
         {
-            mood = "Happy";
-        } else if(message.contains("sad"))
-        {
-            mood= "sad";
+            try {
+                if (message.contains("happy")) {
+                    return "happy";
+                } else {
+                    return "sad";
+                }
+            } catch (NullPointerException e) {
+                return "happy";
+            }
         }
-        return mood;
     }
 
-    public static void main (String args[]){
+    public static void main(String[] args) {
         System.out.println("Welcome to Mood Analyzer Problem");
     }
 }
