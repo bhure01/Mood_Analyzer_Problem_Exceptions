@@ -15,22 +15,26 @@ public class MoodAnalyzerProblem {
         this.message = message;
     }
 
-    //Method to Analyze the mood
-    public String analyzeMood() {
-        {
-            try {
-                if (message.contains("happy")) {
-                    return "happy";
-                } else {
-                    return "sad";
-                }
-            } catch (NullPointerException e) {
-                return "happy";
+    //method to throw custom exceptions
+    public String analyzeMood(Object o)throws MoodAnalysisException
+    {
+        try {
+            if(message.length() == 0){
+                throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.EMPTY,"Please Enter Proper Mood");
+            }
+            if (message.contains("happy")) {
+                return  "happy";
+            } else {
+                return  "sad";
             }
         }
+        catch (NullPointerException e) {
+            //return "happy";
+            throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NULL,"pPlease Enter Proper Mood");
+        }
     }
-
-    public static void main(String[] args) {
+    //MAIN METHOD AND THROW CUSTOM EXCEPTION
+    public static void main (String args[])throws MoodAnalysisException{
         System.out.println("Welcome to Mood Analyzer Problem");
     }
 }
